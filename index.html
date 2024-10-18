@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Management</title>
+    <script>
+        function showForm() {
+            var operation = document.getElementById("operation").value;
+            document.getElementById("insertForm").style.display = "none";
+            document.getElementById("updateForm").style.display = "none";
+            document.getElementById("deleteForm").style.display = "none";
+            document.getElementById("viewForm").style.display = "none";
+
+            if (operation === "insert") {
+                document.getElementById("insertForm").style.display = "block";
+            } else if (operation === "update") {
+                document.getElementById("updateForm").style.display = "block";
+            } else if (operation === "delete") {
+                document.getElementById("deleteForm").style.display = "block";
+            } else if (operation === "view") {
+                document.getElementById("viewForm").style.display = "block";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Employee Management</h1>
+    <label for="operation">Select Operation:</label>
+    <select id="operation" onchange="showForm()">
+        <option value="">--Select--</option>
+        <option value="insert">Insert</option>
+        <option value="update">Update</option>
+        <option value="delete">Delete</option>
+        <option value="view">View</option>
+    </select>
+    <br><br>
+
+    <form id="insertForm" action="insert.php" method="post" style="display:none;">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+        <label for="department">Department:</label>
+        <input type="text" id="department" name="department"><br><br>
+        <label for="designation">Designation:</label>
+        <input type="text" id="designation" name="designation"><br><br>
+        <input type="submit" value="Insert">
+    </form>
+
+    <form id="updateForm" action="update.php" method="post" style="display:none;">
+        <label for="id">Employee ID to Update:</label>
+        <input type="text" id="id" name="id"><br><br>
+        <label for="name">New Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+        <label for="department">New Department:</label>
+        <input type="text" id="department" name="department"><br><br>
+        <label for="designation">New Designation:</label>
+        <input type="text" id="designation" name="designation"><br><br>
+        <input type="submit" value="Update">
+    </form>
+
+    <form id="deleteForm" action="delete.php" method="post" style="display:none;">
+        <label for="id">Employee ID to Delete:</label>
+        <input type="text" id="id" name="id"><br><br>
+        <input type="submit" value="Delete">
+    </form>
+
+    <form id="viewForm" action="select.php" method="post" style="display:none;">
+        <input type="submit" value="View All Employees">
+    </form>
+</body>
+</html>
